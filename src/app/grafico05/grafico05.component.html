@@ -1,0 +1,46 @@
+<div class="col-sm-6 mx-auto">
+  <form (ngSubmit)="onSubmit()" #heroForm="ngForm" class="form horizontal">
+    <div class="panel-info">
+      <div class="panel-body">
+        <div class="form-group ">
+          <label for="pais" class="col-lg-2 control-label ml-3"
+            >Contaminante
+            <div class="col-lg-10">
+              <select
+                type="text"
+                class="form-control"
+                id="contaminante"
+                required
+                [(ngModel)]="select"
+                name="contaminante"
+                #pais="ngModel"
+              >
+                <option
+                  *ngFor="let contaminante of contaminantes"
+                  [value]="contaminante"
+                  >{{contaminante}}
+                </option>
+              </select>
+            </div>
+          </label>
+
+          <button
+            type="submit"
+            class="btn btn-success"
+            [disabled]="!heroForm.form.valid"
+          >
+            Enviar
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div id="miGrafico">
+  <highcharts-chart
+    [Highcharts]="Highcharts"
+    [options]="chartOptions"
+    style="width: 100%; height: 400px; display: block;"
+  ></highcharts-chart>
+</div>

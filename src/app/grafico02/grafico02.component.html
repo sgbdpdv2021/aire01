@@ -1,0 +1,73 @@
+<div class="col-sm-6 mx-auto">
+	<form (ngSubmit)="onSubmit()" #heroForm="ngForm" class="form horizontal">
+		<div class="panel-info">
+			<div class="panel-body">
+				<div class="form-group ">
+
+					<label for="pais" class="col-lg-2 control-label ml-3">País
+          <div class="col-lg-10">
+            <select           
+                type="text"
+                class="form-control"
+                id="pais"
+                required
+                [(ngModel)]="select.country"
+                name="pais"
+                #pais="ngModel"
+            >
+                <option 
+                    *ngFor="let pais of countries" 
+                    [value]="pais">{{pais}}
+                </option>
+            </select>
+          </div>
+        </label>
+
+					<label for="year" class="col-lg-2 control-label ml-3">Año
+          <div class="col-lg-10">
+            <select 
+            
+          class="form-control"
+          id="year"
+          [(ngModel)]="select.year"
+          name="year"
+          #power="ngModel"
+        >
+          <option *ngFor="let year of years" [value]="year">{{year}}</option>
+
+            </select>
+          </div>
+        </label>
+
+					<label for="mes" class="col-lg-2 control-label ml-3">Mes
+            <div class="col-lg-10">
+              <select 
+          class="form-control"
+          id="mes"
+          [(ngModel)]="select.month"
+          name="mes"
+          #power="ngModel"
+        >
+          <option *ngFor="let mes of months" [value]="mes">{{mes}}</option>
+              </select>
+            </div>
+        </label>
+
+					<button
+        type="submit"
+        class="btn btn-success"
+        [disabled]="!heroForm.form.valid"
+      >
+        Enviar
+      </button>
+
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+<div id="miGrafico">
+	<highcharts-chart [Highcharts]="Highcharts" [options]="chartOptions"
+		style="width: 100%; height: 400px; display: block;"></highcharts-chart>
+</div>
